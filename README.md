@@ -12,7 +12,7 @@
  
 </p>
 <h1 align="center">
-    Beta Price
+    Image Editor
 </h1>
 
 <h4 align="center"> 
@@ -34,7 +34,7 @@
 
 ## 💻 Sobre o projeto
 
-Aplicação para realizar pesquisas sobre um produto escolhido pelo usuário, retornando o menor preço e o link do site.
+📷 Aplicação para editar imagens.
 
 ---
 
@@ -42,15 +42,13 @@ Aplicação para realizar pesquisas sobre um produto escolhido pelo usuário, re
 
 ## ⚙️ Funcionalidades
 
-- [ ] Pesquisas podem ser realizadas enviando:
-
-  - [ ] Nome do produto;
-  - [ ] Tipo de produto;
-  - [ ] Preço (opcional).
-
-- [ ] Novos sites podem ser adicionados enviando:
-
-  - [ ] Endereço da página do site.
+- [ ] Aplicação recebe imagens;
+- [ ] Aplicação recebe texto;
+- [ ] É possível aplicar o texto na imagem escolhida;
+- [ ] É possível editar mais de uma imagem de uma vez;
+- [ ] Adotar processos?
+- [ ] Adotar threads?
+- [ ] Adotar escalonamento?
 
 ---
 
