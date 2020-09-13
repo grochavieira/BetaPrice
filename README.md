@@ -12,7 +12,7 @@
  
 </p>
 <h1 align="center">
-    Image Editor
+    Dev Ninja
 </h1>
 
 <h4 align="center"> 
@@ -34,7 +34,7 @@
 
 ## 💻 Sobre o projeto
 
-📷 Aplicação para editar imagens.
+🥷 Site para clientes contratarem programadores.
 
 ---
 
@@ -42,13 +42,14 @@
 
 ## ⚙️ Funcionalidades
 
-- [ ] Aplicação recebe imagens;
-- [ ] Aplicação recebe texto;
-- [ ] É possível aplicar o texto na imagem escolhida;
-- [ ] É possível editar mais de uma imagem de uma vez;
-- [ ] Adotar processos?
-- [ ] Adotar threads?
-- [ ] Adotar escalonamento?
+- [ ] Backend terá:
+
+  - [ ] Rota para Cadastro de Usuários;
+  - [ ] "" "" Login de Usuários;
+  - [ ] "" "" Cadastro de Desenvolvedores;
+  - [ ] "" "" Login de Desenvolvedores;
+  - [ ] "" "" Fechamento de Serviços entre Usuários e Desenvolvedores;
+  - [ ] "" "" Utilização de Threads para melhorar o processamento;
 
 ---
 
