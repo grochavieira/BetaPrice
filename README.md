@@ -12,7 +12,7 @@
  
 </p>
 <h1 align="center">
-    Dev Ninja
+    Dev Ninjas
 </h1>
 
 <h4 align="center"> 
@@ -34,7 +34,7 @@
 
 ## 💻 Sobre o projeto
 
-🥷 Site para clientes contratarem programadores.
+👨‍💻 Site para clientes contratarem programadores.
 
 ---
 
