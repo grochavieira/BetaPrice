@@ -44,12 +44,19 @@
 
 - [ ] Backend terá:
 
-  - [ ] Rota para Cadastro de Usuários;
-  - [ ] "" "" Login de Usuários;
-  - [ ] "" "" Cadastro de Desenvolvedores;
+  - [x] Rota para Cadastro de Clientes;
+  - [x] "" "" Listagem de Clientes;
+  - [x] "" "" Atualização de Clientes;
+  - [ ] "" "" Login de Clientes;
+  - [x] Schema dos Clientes;
+  - [x] Rota para Cadastro de Desenvolvedores;
+  - [x] "" "" Listagem de Desenvolvedores;
+  - [x] "" "" Atualização de Desenvolvedores;
   - [ ] "" "" Login de Desenvolvedores;
-  - [ ] "" "" Fechamento de Serviços entre Usuários e Desenvolvedores;
-  - [ ] "" "" Utilização de Threads para melhorar o processamento;
+  - [x] Schema dos Desenvolvedores;
+  - [ ] Rota para Fechamento de Serviços entre Clientes e Desenvolvedores;
+  - [x] Schema dos Serviços;
+  - [ ] Utilização de Threads para melhorar o processamento;
 
 ---
 
