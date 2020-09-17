@@ -8,13 +8,11 @@ const clientController = new ClientController();
 const devController = new DevController();
 
 routes.get("/client", clientController.index);
-routes.get("/client/:id", clientController.show);
 routes.post("/client", clientController.create);
 routes.put("/client/:id", clientController.update);
 
 routes.get("/dev", devController.index);
-routes.get("/dev/:id", devController.show);
 routes.post("/dev", devController.create);
-routes.put("/dev/:id", devController.update);
+routes.put("/dev/:username", devController.update);
 
 export default routes;
