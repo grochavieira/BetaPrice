@@ -8,6 +8,7 @@ const DevSchema = new mongoose.Schema({
   portfolio: { type: String, required: true },
   bio: { type: String, required: true },
   avatar_url: { type: String, required: true },
+  start: { type: String, default: 0 },
   username: { type: String, required: true },
   password: { type: String, required: true },
 });
