@@ -13,6 +13,6 @@ routes.put("/client/:id", clientController.update);
 
 routes.get("/dev", devController.index);
 routes.post("/dev", devController.create);
-routes.put("/dev/:username", devController.update);
+routes.put("/dev/:id", devController.update);
 
 export default routes;
