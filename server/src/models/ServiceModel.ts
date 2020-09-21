@@ -1,12 +1,11 @@
 import mongoose, { Document } from "mongoose";
 
-interface IServiceModel extends Document {
+export interface IServiceModel extends Document {
   dev_id: string;
   client_id: string;
   description: string;
   price: number;
   limitDate: Date;
-  createdAt: Date;
 }
 
 const ServiceSchema = new mongoose.Schema({
@@ -15,6 +14,7 @@ const ServiceSchema = new mongoose.Schema({
   description: { type: String, required: true },
   price: { type: Number, required: true },
   limitDate: { type: Date, required: true },
+  status: { type: String, default: "Em desenvolvimento..." },
   createdAt: { type: Date, default: Date.now },
 });
 

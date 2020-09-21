@@ -56,9 +56,9 @@
   - [x] "" "" Atualização de Desenvolvedores;
   - [x] "" "" Login de Desenvolvedores;
   - [x] Schema dos Desenvolvedores;
-  - [ ] Rota para Fechamento de Serviços entre Clientes e Desenvolvedores;
-  - [ ] Rota para Listar Serviços;
-  - [ ] Rota para Lista um Serviço específico;
+  - [x] Rota para Fechamento de Serviços entre Clientes e Desenvolvedores;
+  - [x] Rota para Listar Serviços;
+  - [x] Rota para Listar um Serviço específico;
   - [x] Schema dos Serviços;
   - [ ] Utilização de Threads para melhorar o processamento;
 
