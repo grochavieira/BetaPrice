@@ -46,15 +46,19 @@
 
   - [x] Rota para Cadastro de Clientes;
   - [x] "" "" Listagem de Clientes;
+  - [x] "" "" Listar um Cliente específico;
   - [x] "" "" Atualização de Clientes;
-  - [ ] "" "" Login de Clientes;
+  - [x] "" "" Login de Clientes;
   - [x] Schema dos Clientes;
   - [x] Rota para Cadastro de Desenvolvedores;
   - [x] "" "" Listagem de Desenvolvedores;
+  - [x] "" "" Listar um Desenvolvedor específico;
   - [x] "" "" Atualização de Desenvolvedores;
-  - [ ] "" "" Login de Desenvolvedores;
+  - [x] "" "" Login de Desenvolvedores;
   - [x] Schema dos Desenvolvedores;
   - [ ] Rota para Fechamento de Serviços entre Clientes e Desenvolvedores;
+  - [ ] Rota para Listar Serviços;
+  - [ ] Rota para Lista um Serviço específico;
   - [x] Schema dos Serviços;
   - [ ] Utilização de Threads para melhorar o processamento;
 

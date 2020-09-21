@@ -1,4 +1,17 @@
-import mongoose from "mongoose";
+import mongoose, { Document } from "mongoose";
+
+export interface IDevModel extends Document {
+  name: string;
+  email: string;
+  telephone: string;
+  technologies: Array<string>;
+  portfolio: string;
+  bio: string;
+  avatar_url: string;
+  stars: string;
+  username: string;
+  password: string;
+}
 
 const DevSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -13,4 +26,4 @@ const DevSchema = new mongoose.Schema({
   password: { type: String, required: true },
 });
 
-export default mongoose.model("Dev", DevSchema);
+export default mongoose.model<IDevModel>("Dev", DevSchema);
