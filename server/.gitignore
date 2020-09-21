@@ -1,2 +1,2 @@
 node_modules
-./src/credential.ts
+src/credentials.ts
