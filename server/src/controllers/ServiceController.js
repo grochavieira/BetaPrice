@@ -1,11 +1,12 @@
 const ServiceModel = require("../models/ServiceModel");
 const DevModel = require("../models/DevModel");
 const ClientModel = require("../models/ClientModel");
+const serviceThreads = require("../threads/serviceThreads");
 
 class ServiceController {
   async index(request, response) {
     try {
-      const services = await ServiceModel.find();
+      const services = await serviceThreads({ route: "index" });
 
       response.send(services);
     } catch (e) {
@@ -16,18 +17,20 @@ class ServiceController {
   async show(request, response) {
     try {
       const { id } = request.params;
-      const service = await ServiceModel.findById(id);
+      // const service = await ServiceModel.findById(id);
 
-      if (!service) {
-        response.send("Id do serviço não existe.");
-        return;
-      }
+      // if (!service) {
+      //   response.send("Id do serviço não existe.");
+      //   return;
+      // }
 
-      const dev = await DevModel.findById(service.dev_id);
+      // const dev = await DevModel.findById(service.dev_id);
 
-      const client = await ClientModel.findById(service.client_id);
+      // const client = await ClientModel.findById(service.client_id);
 
-      response.json({ service, client, dev });
+      const serviceData = await serviceThreads({ route: "show", id });
+
+      response.json(serviceData);
     } catch (e) {
       response.send("Não foi possível criar o serviço!");
     }
@@ -35,31 +38,31 @@ class ServiceController {
 
   async create(request, response) {
     try {
-      const { dev_id, client_id, description, price, limitDate } = request.body;
-
-      const dev = await DevModel.findById(dev_id);
-
-      const client = await ClientModel.findById(client_id);
-
-      if (!dev) {
-        response.send("Dev não existe.");
-        return;
-      }
-
-      if (!client) {
-        response.send("Cliente não existe.");
-        return;
-      }
-
-      const service = await ServiceModel.create({
+      const {
+        id,
         dev_id,
         client_id,
         description,
         price,
         limitDate,
+      } = request.body;
+
+      const service = {
+        dev_id,
+        client_id,
+        description,
+        price,
+        limitDate,
+      };
+
+      const serviceData = await serviceThreads({
+        route: "create",
+        dev_id,
+        client_id,
+        service,
       });
 
-      response.json({ service, client, dev });
+      response.json(serviceData);
     } catch (e) {
       response.send("Não foi possível criar o serviço");
     }

@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "start": "nodemon --ignore node_modules src/server.js"
   },
   "keywords": [],
   "author": "",

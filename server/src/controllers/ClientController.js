@@ -1,4 +1,3 @@
-const ClientModel = require("../models/ClientModel");
 const clientThreads = require("../threads/clientThreads");
 const bcryptjs = require("bcryptjs");
 

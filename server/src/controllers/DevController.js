@@ -1,14 +1,14 @@
 const DevModel = require("../models/DevModel");
+const devThreads = require("../threads/devThreads");
 const bcryptjs = require("bcryptjs");
 
 class DevController {
   async index(request, response) {
     try {
-      const devs = await DevModel.find();
-
-      response.send(devs);
+      const devs = await devThreads({ route: "index" });
+      response.json(devs);
     } catch (e) {
-      response.send("Não foi possível listar os desenvolvedores.");
+      response.json("Não foi possível listar os desenvolvedores.");
     }
   }
 
@@ -16,16 +16,16 @@ class DevController {
     try {
       const { id } = request.params;
 
-      const dev = await DevModel.findById(id);
+      const dev = await devThreads({ route: "show", id });
 
       if (!dev) {
-        response.send("Desenvolvedor não existe!");
+        response.json("Desenvolvedor não existe!");
         return;
       }
 
-      response.send(dev);
+      response.json(dev);
     } catch (e) {
-      response.send("Não foi possível realizar a pesquisa.");
+      response.json("Não foi possível realizar a pesquisa.");
     }
   }
 
@@ -33,23 +33,23 @@ class DevController {
     try {
       const { email, password } = request.body;
 
-      const dev = await DevModel.findOne({ email });
+      const dev = await devThreads({ route: "login", email });
 
       console.log(dev);
 
       if (!dev) {
-        response.send("Usuário não existe");
+        response.json("Usuário não existe");
         return;
       }
 
       if (!bcryptjs.compareSync(password, dev.password)) {
-        response.send("Senha inválida");
+        response.json("Senha inválida");
         return;
       }
 
-      response.send(dev);
+      response.json(dev);
     } catch (e) {
-      response.send("Não foi possível realizar o login.");
+      response.json("Não foi possível realizar o login.");
     }
   }
 
@@ -72,7 +72,7 @@ class DevController {
       const salt = bcryptjs.genSaltSync();
       const encryptedPassword = bcryptjs.hashSync(password, salt);
 
-      const answer = await DevModel.create({
+      const dev = {
         name,
         email,
         telephone,
@@ -83,10 +83,13 @@ class DevController {
         username,
         password: encryptedPassword,
         stars: "0",
-      });
-      response.json({ answer });
+      };
+
+      const feedback = await devThreads({ route: "create", dev });
+
+      response.json(feedback);
     } catch (e) {
-      response.send("Não foi possível criar um novo dev.");
+      response.json("Não foi possível criar um novo dev.");
     }
   }
 
@@ -103,32 +106,33 @@ class DevController {
         avatar_url,
         username,
       } = request.body;
-      let dev = await DevModel.findById(id);
-      console.log(dev);
-      if (!dev) response.status(404);
+
+      const dev = await devThreads({ route: "show", id });
+
+      if (!dev) return response.status(404).json({ error: "Dev não existe." });
 
       const techsArray = technologies.split(",").map((tech) => tech.trim());
 
-      let newDev = await DevModel.findByIdAndUpdate(
-        id,
-        {
-          name,
-          email,
-          telephone,
-          technologies: techsArray,
-          portfolio,
-          bio,
-          avatar_url,
-          username,
-        },
-        {
-          new: true,
-        }
-      );
+      const updatedDev = {
+        name,
+        email,
+        telephone,
+        technologies: techsArray,
+        portfolio,
+        bio,
+        avatar_url,
+        username,
+      };
 
-      response.send(newDev);
+      const feedback = await devThreads({
+        route: "update",
+        id,
+        updatedDev,
+      });
+
+      response.json(feedback);
     } catch (e) {
-      response.send("Não foi possível atualizar o perfil do dev.");
+      response.json("Não foi possível atualizar o perfil do dev.");
     }
   }
 }
