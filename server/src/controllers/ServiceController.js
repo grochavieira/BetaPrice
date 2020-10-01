@@ -1,10 +1,9 @@
-import { Request, Response } from "express";
-import ServiceModel, { IServiceModel } from "../models/ServiceModel";
-import DevModel, { IDevModel } from "../models/DevModel";
-import ClientModel, { IClientModel } from "../models/ClientModel";
+const ServiceModel = require("../models/ServiceModel");
+const DevModel = require("../models/DevModel");
+const ClientModel = require("../models/ClientModel");
 
 class ServiceController {
-  async index(request: Request, response: Response) {
+  async index(request, response) {
     try {
       const services = await ServiceModel.find();
 
@@ -14,10 +13,10 @@ class ServiceController {
     }
   }
 
-  async show(request: Request, response: Response) {
+  async show(request, response) {
     try {
       const { id } = request.params;
-      const service: IServiceModel | null = await ServiceModel.findById(id);
+      const service = await ServiceModel.findById(id);
 
       if (!service) {
         response.send("Id do serviço não existe.");
@@ -34,7 +33,7 @@ class ServiceController {
     }
   }
 
-  async create(request: Request, response: Response) {
+  async create(request, response) {
     try {
       const { dev_id, client_id, description, price, limitDate } = request.body;
 
@@ -67,4 +66,4 @@ class ServiceController {
   }
 }
 
-export default ServiceController;
+module.exports = ServiceController;

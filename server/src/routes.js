@@ -1,7 +1,7 @@
-import express from "express";
-import ClientController from "./controllers/ClientController";
-import DevController from "./controllers/DevController";
-import ServiceController from "./controllers/ServiceController";
+const express = require("express");
+const ClientController = require("./controllers/ClientController");
+const DevController = require("./controllers/DevController");
+const ServiceController = require("./controllers/ServiceController");
 
 const routes = express.Router();
 
@@ -25,4 +25,4 @@ routes.get("/service", serviceController.index);
 routes.get("/service/:id", serviceController.show);
 routes.post("/service", serviceController.create);
 
-export default routes;
+module.exports = routes;

@@ -1,5 +1,5 @@
-import express from "express";
-import ClientController from "../controllers/ClientController";
+const express = require("express");
+const ClientController = require("../controllers/ClientController");
 
 const routes = express.Router();
 
@@ -11,4 +11,4 @@ routes.post("/", clientController.create);
 routes.post("/login", clientController.login);
 routes.put("/:id", clientController.update);
 
-export default routes;
+module.exports = routes;

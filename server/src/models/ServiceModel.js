@@ -1,12 +1,4 @@
-import mongoose, { Document } from "mongoose";
-
-export interface IServiceModel extends Document {
-  dev_id: string;
-  client_id: string;
-  description: string;
-  price: number;
-  limitDate: Date;
-}
+const mongoose = require("mongoose");
 
 const ServiceSchema = new mongoose.Schema({
   dev_id: { type: String, required: true },
@@ -18,4 +10,4 @@ const ServiceSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-export default mongoose.model<IServiceModel>("Service", ServiceSchema);
+module.exports = mongoose.model("Service", ServiceSchema);

@@ -1,5 +1,5 @@
-import express from "express";
-import DevController from "../controllers/DevController";
+const express = require("express");
+const DevController = require("../controllers/DevController");
 
 const routes = express.Router();
 
@@ -11,4 +11,4 @@ routes.post("/", devController.create);
 routes.post("/login", devController.login);
 routes.put("/:id", devController.update);
 
-export default routes;
+module.exports = routes;

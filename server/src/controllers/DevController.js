@@ -1,9 +1,8 @@
-import { Request, Response } from "express";
-import DevModel, { IDevModel } from "../models/DevModel";
+const DevModel = require("../models/DevModel");
 const bcryptjs = require("bcryptjs");
 
 class DevController {
-  async index(request: Request, response: Response) {
+  async index(request, response) {
     try {
       const devs = await DevModel.find();
 
@@ -13,7 +12,7 @@ class DevController {
     }
   }
 
-  async show(request: Request, response: Response) {
+  async show(request, response) {
     try {
       const { id } = request.params;
 
@@ -30,11 +29,11 @@ class DevController {
     }
   }
 
-  async login(request: Request, response: Response) {
+  async login(request, response) {
     try {
       const { email, password } = request.body;
 
-      const dev: IDevModel | null = await DevModel.findOne({ email });
+      const dev = await DevModel.findOne({ email });
 
       console.log(dev);
 
@@ -54,7 +53,7 @@ class DevController {
     }
   }
 
-  async create(request: Request, response: Response) {
+  async create(request, response) {
     try {
       const {
         name,
@@ -68,9 +67,7 @@ class DevController {
         password,
       } = request.body;
 
-      const techsArray = technologies
-        .split(",")
-        .map((tech: string) => tech.trim());
+      const techsArray = technologies.split(",").map((tech) => tech.trim());
 
       const salt = bcryptjs.genSaltSync();
       const encryptedPassword = bcryptjs.hashSync(password, salt);
@@ -93,7 +90,7 @@ class DevController {
     }
   }
 
-  async update(request: Request, response: Response) {
+  async update(request, response) {
     try {
       const { id } = request.params;
       const {
@@ -110,9 +107,7 @@ class DevController {
       console.log(dev);
       if (!dev) response.status(404);
 
-      const techsArray = technologies
-        .split(",")
-        .map((tech: string) => tech.trim());
+      const techsArray = technologies.split(",").map((tech) => tech.trim());
 
       let newDev = await DevModel.findByIdAndUpdate(
         id,
@@ -138,4 +133,4 @@ class DevController {
   }
 }
 
-export default DevController;
+module.exports = DevController;
