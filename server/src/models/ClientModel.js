@@ -86,6 +86,10 @@ class Client extends Sequelize.Model {
   passwordIsValid(password) {
     return bcryptjs.compare(password, this.password_hash);
   }
+
+  static associate(models) {
+    this.hasMany(models.Service, { foreignKey: "client_id" });
+  }
 }
 
 module.exports = Client;

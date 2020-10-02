@@ -120,6 +120,10 @@ class Dev extends Sequelize.Model {
   passwordIsValid(password) {
     return bcryptjs.compare(password, this.password_hash);
   }
+
+  static associate(models) {
+    this.hasMany(models.Service, { foreignKey: "dev_id" });
+  }
 }
 
 module.exports = Dev;
