@@ -5,7 +5,7 @@ const {
   parentPort,
   workerData,
 } = require("worker_threads");
-const mgConfig = require("../config/mongooseConfig");
+require("../database");
 
 async function clientThreads(workerData) {
   return new Promise((resolve, reject) => {
@@ -17,38 +17,88 @@ async function clientThreads(workerData) {
 }
 
 if (!isMainThread) {
-  mgConfig.createConnection();
   parentPort.once("message", async (workerData) => {
     const commandFunction = routeCommands[workerData.route];
     const response = await commandFunction(workerData);
-    mgConfig.removeConnection();
     parentPort.postMessage(response);
   });
 }
 
 const routeCommands = {
   index: async (workerData) => {
-    let clients = await ClientModel.find();
+    const clients = await ClientModel.findAll({
+      attributes: [
+        "id",
+        "name",
+        "username",
+        "email",
+        "telephone",
+        "avatar_url",
+      ],
+    });
     return deepCopy(clients);
   },
   show: async ({ id }) => {
-    let client = await ClientModel.findById(id);
-    return deepCopy(client);
+    const client = await ClientModel.findByPk(id);
+    const {
+      id: client_id,
+      name,
+      telephone,
+      username,
+      avatar_url,
+      email,
+    } = client;
+    return deepCopy({
+      id: client_id,
+      name,
+      telephone,
+      username,
+      avatar_url,
+      email,
+    });
   },
-  login: async ({ email }) => {
-    const client = await ClientModel.findOne({ email });
-    return deepCopy(client);
-  },
-  create: async ({ client }) => {
-    const response = await ClientModel.create(client);
-    console.log("response", response);
-    return deepCopy(response);
+  store: async ({ client }) => {
+    try {
+      const newClient = await ClientModel.create(client);
+      const { id, name, telephone, username, avatar_url, email } = newClient;
+      return deepCopy({ id, name, telephone, username, avatar_url, email });
+    } catch (e) {
+      const errors = e.errors.map((err) => err.message);
+      return deepCopy({ errors: [errors] });
+    }
   },
   update: async ({ id, updatedClient }) => {
-    let response = await ClientModel.findByIdAndUpdate(id, updatedClient, {
-      new: true,
-    });
-    return deepCopy(response);
+    try {
+      const client = await ClientModel.findByPk(id);
+
+      if (!client) {
+        return {
+          errors: ["usuário não existe."],
+        };
+      }
+
+      const newData = await client.update(updatedClient);
+      const {
+        id: client_id,
+        name,
+        telephone,
+        username,
+        avatar_url,
+        email,
+      } = newData;
+
+      return deepCopy({
+        id: client_id,
+        name,
+        telephone,
+        username,
+        avatar_url,
+        email,
+      });
+    } catch (e) {
+      const errors = e.errors.map((err) => err.message);
+      return deepCopy({ errors: [errors] });
+    }
   },
 };
 

@@ -7,8 +7,7 @@ const devController = new DevController();
 
 routes.get("/", devController.index);
 routes.get("/:id", devController.show);
-routes.post("/", devController.create);
-routes.post("/login", devController.login);
+routes.post("/", devController.store);
 routes.put("/:id", devController.update);
 
 module.exports = routes;

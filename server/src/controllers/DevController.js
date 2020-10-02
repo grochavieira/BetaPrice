@@ -1,6 +1,5 @@
-const DevModel = require("../models/DevModel");
 const devThreads = require("../threads/devThreads");
-const bcryptjs = require("bcryptjs");
+const DevModel = require("../models/DevModel");
 
 class DevController {
   async index(request, response) {
@@ -19,7 +18,7 @@ class DevController {
       const dev = await devThreads({ route: "show", id });
 
       if (!dev) {
-        response.json("Desenvolvedor não existe!");
+        response.status(400).json("Desenvolvedor não existe!");
         return;
       }
 
@@ -29,65 +28,14 @@ class DevController {
     }
   }
 
-  async login(request, response) {
+  async store(request, response) {
     try {
-      const { email, password } = request.body;
+      const newDev = await devThreads({
+        route: "store",
+        dev: request.body,
+      });
 
-      const dev = await devThreads({ route: "login", email });
-
-      console.log(dev);
-
-      if (!dev) {
-        response.json("Usuário não existe");
-        return;
-      }
-
-      if (!bcryptjs.compareSync(password, dev.password)) {
-        response.json("Senha inválida");
-        return;
-      }
-
-      response.json(dev);
-    } catch (e) {
-      response.json("Não foi possível realizar o login.");
-    }
-  }
-
-  async create(request, response) {
-    try {
-      const {
-        name,
-        email,
-        telephone,
-        technologies,
-        portfolio,
-        bio,
-        avatar_url,
-        username,
-        password,
-      } = request.body;
-
-      const techsArray = technologies.split(",").map((tech) => tech.trim());
-
-      const salt = bcryptjs.genSaltSync();
-      const encryptedPassword = bcryptjs.hashSync(password, salt);
-
-      const dev = {
-        name,
-        email,
-        telephone,
-        technologies: techsArray,
-        portfolio,
-        bio,
-        avatar_url,
-        username,
-        password: encryptedPassword,
-        stars: "0",
-      };
-
-      const feedback = await devThreads({ route: "create", dev });
-
-      response.json(feedback);
+      response.json(newDev);
     } catch (e) {
       response.json("Não foi possível criar um novo dev.");
     }
@@ -96,41 +44,13 @@ class DevController {
   async update(request, response) {
     try {
       const { id } = request.params;
-      const {
-        name,
-        email,
-        telephone,
-        technologies,
-        portfolio,
-        bio,
-        avatar_url,
-        username,
-      } = request.body;
-
-      const dev = await devThreads({ route: "show", id });
-
-      if (!dev) return response.status(404).json({ error: "Dev não existe." });
-
-      const techsArray = technologies.split(",").map((tech) => tech.trim());
-
-      const updatedDev = {
-        name,
-        email,
-        telephone,
-        technologies: techsArray,
-        portfolio,
-        bio,
-        avatar_url,
-        username,
-      };
-
-      const feedback = await devThreads({
+      const updatedDev = await devThreads({
         route: "update",
         id,
-        updatedDev,
+        updatedDev: request.body,
       });
 
-      response.json(feedback);
+      return response.json(updatedDev);
     } catch (e) {
       response.json("Não foi possível atualizar o perfil do dev.");
     }

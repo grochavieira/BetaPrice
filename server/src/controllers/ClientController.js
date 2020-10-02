@@ -1,5 +1,5 @@
 const clientThreads = require("../threads/clientThreads");
-const bcryptjs = require("bcryptjs");
+const ClientModel = require("../models/ClientModel");
 
 class ClientController {
   async index(request, response) {
@@ -15,92 +15,50 @@ class ClientController {
   async show(request, response) {
     try {
       const { id } = request.params;
-
       const client = await clientThreads({ route: "show", id });
 
       if (!client) {
-        response.json("Cliente não existe!");
+        response.status(400).json("Cliente não existe!");
         return;
       }
 
-      response.json(client);
+      return response.json(client);
     } catch (e) {
-      response.json("Não foi possível realizar a pesquisa.");
+      console.log(e);
+      response.json({ msg: "Não foi possível realizar a pesquisa." });
     }
   }
 
-  async login(request, response) {
+  async store(request, response) {
     try {
-      const { email, password } = request.body;
+      const newClient = await clientThreads({
+        route: "store",
+        client: request.body,
+      });
 
-      const client = await clientThreads({ route: "login", email });
-
-      console.log(client);
-
-      if (!client) {
-        response.json("Cliente não existe");
-        return;
-      }
-
-      if (!bcryptjs.compareSync(password, client.password)) {
-        response.json("Senha inválida");
-        return;
-      }
-
-      response.json(client);
+      response.json(newClient);
     } catch (e) {
-      response.json("Não foi possível logar.");
-    }
-  }
-
-  async create(request, response) {
-    try {
-      const { name, email, telephone, username, password } = request.body;
-
-      const salt = bcryptjs.genSaltSync();
-      const encryptedPassword = bcryptjs.hashSync(password, salt);
-
-      const client = {
-        name,
-        email,
-        telephone,
-        username,
-        password: encryptedPassword,
-      };
-
-      const answer = await clientThreads({ route: "create", client });
-
-      response.json({ answer });
-    } catch (e) {
-      response.json("Não foi possível realizar o cadastro do cliente");
+      return response
+        .status(400)
+        .json("Não foi possível concluir o cadastro do cliente.");
     }
   }
 
   async update(request, response) {
     try {
       const { id } = request.params;
-      const { name, email, telephone, username } = request.body;
-
-      const client = await clientThreads({ route: "show", id });
-
-      if (!client) response.status(404);
-
-      const updatedClient = {
-        name,
-        email,
-        telephone,
-        username,
-      };
-
-      const feedback = await clientThreads({
+      const clientUpdated = await clientThreads({
         route: "update",
         id,
-        updatedClient,
+        updatedClient: request.body,
       });
 
-      response.json(feedback);
+      return response.json(clientUpdated);
     } catch (e) {
-      response.json("Não foi possível atualizar o cliente.");
+      console.log(e);
+      return response.status(400).json({
+        errors: ["email já existe"],
+      });
     }
   }
 }

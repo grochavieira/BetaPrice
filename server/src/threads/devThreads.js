@@ -5,7 +5,7 @@ const {
   parentPort,
   workerData,
 } = require("worker_threads");
-const mgConfig = require("../config/mongooseConfig");
+require("../database");
 
 async function devThreads(workerData) {
   return new Promise((resolve, reject) => {
@@ -17,38 +17,126 @@ async function devThreads(workerData) {
 }
 
 if (!isMainThread) {
-  mgConfig.createConnection();
   parentPort.once("message", async (workerData) => {
     const commandFunction = routeCommands[workerData.route];
     const response = await commandFunction(workerData);
-    mgConfig.removeConnection();
     parentPort.postMessage(response);
   });
 }
 
 const routeCommands = {
   index: async (workerData) => {
-    let devs = await DevModel.find();
+    console.log("Entrour");
+    const devs = await DevModel.findAll({
+      attributes: [
+        "id",
+        "name",
+        "username",
+        "email",
+        "technologies",
+        "telephone",
+        "bio",
+        "avatar_url",
+        "portfolio",
+        "stars",
+      ],
+    });
+    console.log("dev", devs);
     return deepCopy(devs);
   },
   show: async ({ id }) => {
-    let dev = await DevModel.findById(id);
-    return deepCopy(dev);
+    const dev = await DevModel.findByPk(id);
+    const {
+      id: dev_id,
+      name,
+      telephone,
+      username,
+      avatar_url,
+      email,
+      technologies,
+      portfolio,
+      stars,
+    } = dev;
+    return deepCopy({
+      id: dev_id,
+      name,
+      telephone,
+      username,
+      avatar_url,
+      email,
+      technologies,
+      portfolio,
+      stars,
+    });
   },
-  login: async ({ email }) => {
-    const dev = await DevModel.findOne({ email });
-    return deepCopy(dev);
-  },
-  create: async ({ dev }) => {
-    const response = await DevModel.create(dev);
-    console.log("response", response);
-    return deepCopy(response);
+  store: async ({ dev }) => {
+    try {
+      const newDev = await DevModel.create(dev);
+      const {
+        id,
+        name,
+        telephone,
+        username,
+        avatar_url,
+        email,
+        technologies,
+        portfolio,
+        stars,
+      } = newDev;
+      return deepCopy({
+        id,
+        name,
+        telephone,
+        username,
+        technologies,
+        avatar_url,
+        email,
+        portfolio,
+        stars,
+      });
+    } catch (e) {
+      const errors = e.errors.map((err) => err.message);
+      return deepCopy({ errors: [errors] });
+    }
   },
   update: async ({ id, updatedDev }) => {
-    let response = await DevModel.findByIdAndUpdate(id, updatedDev, {
-      new: true,
-    });
-    return deepCopy(response);
+    try {
+      const dev = await DevModel.findByPk(id);
+
+      if (!dev) {
+        return {
+          errors: ["desenvolvedor não existe."],
+        };
+      }
+
+      const newData = await dev.update(updatedDev);
+      const {
+        id: dev_id,
+        name,
+        telephone,
+        username,
+        technologies,
+        avatar_url,
+        email,
+        portfolio,
+        stars,
+      } = newData;
+
+      return deepCopy({
+        id: dev_id,
+        name,
+        telephone,
+        username,
+        technologies,
+        avatar_url,
+        email,
+        portfolio,
+        stars,
+      });
+    } catch (e) {
+      const errors = e.errors.map((err) => err.message);
+      return deepCopy({ errors: [errors] });
+    }
   },
 };
 

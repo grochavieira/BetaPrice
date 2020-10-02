@@ -7,8 +7,7 @@ const clientController = new ClientController();
 
 routes.get("/", clientController.index);
 routes.get("/:id", clientController.show);
-routes.post("/", clientController.create);
-routes.post("/login", clientController.login);
+routes.post("/", clientController.store);
 routes.put("/:id", clientController.update);
 
 module.exports = routes;
