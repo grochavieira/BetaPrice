@@ -50,17 +50,21 @@
   - [x] "" "" Atualização de Clientes;
   - [x] "" "" Login de Clientes;
   - [x] Schema dos Clientes;
+  - [x] Utilização de Threads para as rotas dos Clientes;
   - [x] Rota para Cadastro de Desenvolvedores;
   - [x] "" "" Listagem de Desenvolvedores;
   - [x] "" "" Listar um Desenvolvedor específico;
   - [x] "" "" Atualização de Desenvolvedores;
   - [x] "" "" Login de Desenvolvedores;
   - [x] Schema dos Desenvolvedores;
+  - [x] Utilização de Threads para as rotas dos Desenvolvedores;
   - [x] Rota para Fechamento de Serviços entre Clientes e Desenvolvedores;
   - [x] Rota para Listar Serviços;
   - [x] Rota para Listar um Serviço específico;
+  - [x] Rota para Atualizar um Serviço específico;
   - [x] Schema dos Serviços;
-  - [ ] Utilização de Threads para melhorar o processamento;
+  - [x] Utilização de Threads para as rotas dos Serviços;
+  - [ ] Implementar JWT para autorização das rotas;
 
 ---
 
