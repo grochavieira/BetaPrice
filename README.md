@@ -42,29 +42,38 @@
 
 ## ⚙️ Funcionalidades
 
-- [ ] Backend terá:
+- [ ] Backend:
 
-  - [x] Rota para Cadastro de Clientes;
-  - [x] "" "" Listagem de Clientes;
-  - [x] "" "" Listar um Cliente específico;
-  - [x] "" "" Atualização de Clientes;
-  - [x] "" "" Login de Clientes;
-  - [x] Schema dos Clientes;
-  - [x] Utilização de Threads para as rotas dos Clientes;
-  - [x] Rota para Cadastro de Desenvolvedores;
-  - [x] "" "" Listagem de Desenvolvedores;
-  - [x] "" "" Listar um Desenvolvedor específico;
-  - [x] "" "" Atualização de Desenvolvedores;
-  - [x] "" "" Login de Desenvolvedores;
-  - [x] Schema dos Desenvolvedores;
-  - [x] Utilização de Threads para as rotas dos Desenvolvedores;
-  - [x] Rota para Fechamento de Serviços entre Clientes e Desenvolvedores;
-  - [x] Rota para Listar Serviços;
-  - [x] Rota para Listar um Serviço específico;
-  - [x] Rota para Atualizar um Serviço específico;
-  - [x] Schema dos Serviços;
-  - [x] Utilização de Threads para as rotas dos Serviços;
-  - [ ] Implementar JWT para autorização das rotas;
+  - [x] Rota dos Clientes:
+    - [x] Cadastro;
+    - [x] Listar Todos;
+    - [x] Listar Um;
+    - [x] Atualizar;
+    - [x] Implementação das Threads nas rotas;
+  - [x] Rota dos Desenvolvedores:
+    - [x] Cadastro;
+    - [x] Listar Todos;
+    - [x] Listar Um;
+    - [x] Atualizar;
+    - [x] Implementação das Threads nas rotas;
+  - [x] Rota dos Serviços:
+    - [x] Fechamento de Serviços;
+    - [x] Listar Todos;
+    - [x] Listar Um;
+    - [x] Atualizar;
+    - [x] Implementação das Threads nas rotas;
+  - [ ] Implementar JWT para autorização das rotas.
+
+- [x] Database:
+  - [x] Clientes:
+    - [x] Migrations;
+    - [x] Model;
+  - [x] Devs:
+    - [x] Migrations;
+    - [x] Model;
+  - [x] Serviços:
+    - [x] Migrations;
+    - [x] Model;
 
 ---
 
