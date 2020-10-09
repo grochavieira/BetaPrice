@@ -64,6 +64,49 @@
     - [x] Implementação das Threads nas rotas;
   - [ ] Implementar JWT para autorização das rotas.
 
+- [ ] Frontend:
+
+  - [ ] Header da Interface.
+    - [x] Design do Header;
+    - [x] Link para as paginas;
+    - [ ] Menu de Hamburguer.
+  - [x] Footer da Interface.
+  - [x] Página Home:
+    - [x] Seção Hero;
+      - [x] Design;
+      - [x] Responsividade.
+    - [x] Seção Hire;
+      - [x] Design;
+      - [x] Responsividade.
+  - [ ] Formulários de Cadastro: :
+    - [ ] Cliente;
+      - [x] Design;
+      - [x] Responsividade;
+      - [ ] Cadastro.
+    - [ ] Dev;
+      - [x] Design;
+      - [x] Responsividade;
+      - [ ] Cadastro.
+  - [ ] Página Login.
+    - [ ] Design;
+    - [ ] Responsividade.
+    - [ ] Funcionalidade de Logar.
+  - [ ] Página Serviços.
+    - [ ] Design;
+    - [ ] Responsividade;
+    - [ ] Funcionalidade de Pesquisar.
+  - [ ] Página Status.
+    - [ ] Design;
+    - [ ] Responsividade;
+    - [ ] Informações sobre os pedidos realizados.
+  - [ ] Página Pedidos.
+    - [ ] Design;
+    - [ ] Responsividade;
+    - [ ] Criação e confirmação de pedidos.
+  - [ ] Página Sobre.
+    - [ ] Design;
+    - [ ] Responsividade.
+
 - [x] Database:
   - [x] Clientes:
     - [x] Migrations;
