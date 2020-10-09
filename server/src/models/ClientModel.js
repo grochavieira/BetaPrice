@@ -38,7 +38,7 @@ class Client extends Sequelize.Model {
           validate: {
             len: {
               args: [9, 15],
-              msg: "Campo nome deve ter entre 9 e 15 caracteres",
+              msg: "Campo telefone deve ter entre 9 e 15 caracteres",
             },
           },
         },

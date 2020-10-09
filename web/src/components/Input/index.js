@@ -2,13 +2,15 @@ import React from "react";
 
 import "./styles.css";
 
-const Input = ({ name, label, placeholder, type }) => {
+const Input = ({ name, label, placeholder, type, value, setValue }) => {
   return (
     <div className="input-block">
       <input
         name={name}
         type={type ? type : "text"}
         placeholder={placeholder}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
         required
       />
       <label htmlFor={name}>{label}</label>

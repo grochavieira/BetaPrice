@@ -1,4 +1,5 @@
 .register-client-container {
+    height: 100vh;
     background-color: var(--color-primary);
     background-image: url("../../assets/pattern1.png");
     background-size: cover;

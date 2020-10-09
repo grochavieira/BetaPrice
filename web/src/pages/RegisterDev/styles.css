@@ -1,37 +1,5 @@
-/* .register-dev-container {
-    background-color: var(--color-primary);
-    background-image: url("../../assets/pattern2.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 3rem 0;
-}
-
-.register-dev-container .form {
-    padding: 2rem 3rem;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 3px;
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
-    background-color: var(--color-secondary);
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-}
-
-.register-dev-container .form .heading-secondary {
-    font-size: 2.8rem;
-    width: 100%;
-    text-align: center;
-    border-bottom: 2px solid var(--color-primary);
-    color: var(--color-primary);
-    margin-bottom: 2rem;
-} */
-
 .register-dev-container {
+    height: 100%;
     background-color: var(--color-primary);
     background-image: url("../../assets/pattern2.png");
     background-size: cover;
