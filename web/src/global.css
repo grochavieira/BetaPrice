@@ -1,0 +1,33 @@
+@import url("//db.onlinewebfonts.com/c/3d85dc16e94da9358d451666fdbc3398?family=Circular+Medium");
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  --color-primary: #1c110a;
+  --color-secondary: #f5dbcb;
+  --color-accent-1: #06D6A0;
+  --color-accent-2: #E4FF1A;
+  --color-accent-3: #5F4BB6;
+  background-color: var(--color-primary);
+  font-family: Karla;
+}
+
+button,
+input {
+  font-family: Karla;
+}
+
+@media only screen and (max-width: 960px) {
+  html {
+    font-size: 55%;
+  }
+}

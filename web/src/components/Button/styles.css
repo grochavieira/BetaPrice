@@ -1,0 +1,86 @@
+.btn {
+  margin-top: 1rem;
+  border: 0;
+  border-radius: 5rem;
+  padding: 1.2rem 3rem;
+  font-weight: bold;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transition: all 0.2s;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(#000, 0.2);
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0rem 0.5rem 0.1rem 0rem rgba(#000, 0.2);
+}
+
+.btn-1::after {
+  background-color: var(--color-accent-1);
+}
+
+.btn-1 {
+  background-color: var(--color-accent-1);
+  color: var(--color-primary);
+}
+
+
+.btn-2::after {
+  background-color: var(--color-accent-2);
+}
+
+.btn-2 {
+  background-color: var(--color-accent-2);
+  color: var(--color-primary);
+}
+
+.btn-3::after {
+  background-color: var(--color-accent-3);
+}
+
+.btn-3 {
+  background-color: var(--color-accent-3);
+  color: var(--color-primary);
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.btn-2::after {
+  background-color: var(--color-accent-2);
+}
+
+.btn-square {
+  border-radius: 3px;
+}
+
+.btn-square::after {
+  border-radius: 3px;
+}
