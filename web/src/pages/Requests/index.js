@@ -3,8 +3,8 @@ import Header from "../../components/Header";
 
 import "./styles.css";
 
-const Login = () => {
-  return <Header isActiveLogin={true} />;
+const Requests = () => {
+  return <Header isActiveRequests={true} />;
 };
 
-export default Login;
+export default Requests;

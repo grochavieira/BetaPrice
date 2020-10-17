@@ -1,4 +1,4 @@
-@import url("//db.onlinewebfonts.com/c/3d85dc16e94da9358d451666fdbc3398?family=Circular+Medium");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap");
 
 * {
@@ -14,16 +14,21 @@ html {
 body {
   --color-primary: #1c110a;
   --color-secondary: #f5dbcb;
-  --color-accent-1: #06D6A0;
-  --color-accent-2: #E4FF1A;
-  --color-accent-3: #5F4BB6;
+  --color-accent-1: #06d6a0;
+  --color-accent-2: #e4ff1a;
+  --color-accent-3: #5f4bb6;
   background-color: var(--color-primary);
   font-family: Karla;
 }
 
-button,
-input {
+button {
   font-family: Karla;
+}
+
+input,
+label,
+p {
+  font-family: Montserrat;
 }
 
 @media only screen and (max-width: 960px) {

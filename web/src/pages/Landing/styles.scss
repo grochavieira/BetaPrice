@@ -1,0 +1,56 @@
+.landing {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    justify-content: space-around;
+    &__logo {
+      color: var(--color-secondary);
+      font-weight: bold;
+      font-size: 3rem;
+    }
+
+    &__login {
+      h2 {
+        font-size: 3rem;
+        color: var(--color-secondary);
+        margin-bottom: 3rem;
+      }
+    }
+
+    &__register {
+      a {
+        display: flex;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: var(--color-accent-1);
+        transition: opacity 0.2s;
+
+        svg {
+          margin-right: 1rem;
+          color: var(--color-secondary);
+        }
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  &__image-block {
+    margin-left: 10rem;
+
+    img {
+      width: 60rem;
+      background-size: cover;
+    }
+  }
+}

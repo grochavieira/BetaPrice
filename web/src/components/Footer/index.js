@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./styles.css";
+import "./styles.scss";
 
 const Footer = () => {
   return (
-    <footer className="footer-container">
+    <footer className="footer">
       <p> &copy; Made By DevNinjas </p>
     </footer>
   );

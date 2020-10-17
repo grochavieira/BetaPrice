@@ -1,38 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./styles.css";
+import { FiLogOut } from "react-icons/fi";
+import "./styles.scss";
 
 export const Header = ({
-  isActiveHome,
-  isActiveProducts,
+  isActiveRequests,
   isActiveCategories,
   isActiveLogin,
   isActiveAbout,
 }) => {
   return (
-    <div className="header-container">
-      <div className="logo">
-        <p>DevNinjas</p>
+    <div className="header">
+      <div className="header__logo">
+        <h1>DevNinjas</h1>
       </div>
-      <div>
+      <nav>
         <ul>
-          <li className={isActiveHome ? "active" : ""}>
-            <Link to="/">Home</Link>
-          </li>
-          <li className={isActiveProducts ? "active" : ""}>
-            <Link to="/products">Produtos & Tarefas</Link>
-          </li>
           <li className={isActiveCategories ? "active" : ""}>
             <Link to="/categories">Categorias</Link>
           </li>
-          <li className={isActiveLogin ? "active" : ""}>
-            <Link to="/login">Login</Link>
+          <li className={isActiveRequests ? "active" : ""}>
+            <Link to="/requests">Meus Pedidos</Link>
           </li>
           <li className={isActiveAbout ? "active" : ""}>
             <Link to="/about">Sobre</Link>
           </li>
+          <li className={isActiveLogin ? "active" : ""}>
+            <Link to="/">
+              <FiLogOut />
+            </Link>
+          </li>
         </ul>
-      </div>
+      </nav>
     </div>
   );
 };
