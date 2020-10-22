@@ -8,12 +8,12 @@ class ServiceController {
     try {
       const services = await serviceThreads({ route: "index" });
 
-      response.json(services);
+      response.status(200).json(services);
     } catch (e) {
       console.log(e);
       return response
         .status(400)
-        .json({ error: "Não foi possível listar os serviços" });
+        .json({ errors: ["Não foi possível listar os serviços"] });
     }
   }
 
@@ -38,8 +38,8 @@ class ServiceController {
       return response.json(service);
     } catch (e) {
       console.log(e);
-      return response.status(400).json({
-        errors: "não foi possível pegar os dados do serviço",
+      return response.status(404).json({
+        errors: "Não foi possível pegar os dados do serviço",
       });
     }
   }
@@ -66,10 +66,12 @@ class ServiceController {
 
       const newService = await serviceThreads({ route: "store", service });
 
-      response.json(newService);
+      response.status(200).json(newService);
     } catch (e) {
       console.log(e);
-      response.json("Não foi possível criar um novo serviço.");
+      response.status(404).json({
+        errors: ["Não foi possível criar um novo serviço."],
+      });
     }
   }
   async update(request, response) {
@@ -84,7 +86,9 @@ class ServiceController {
       return response.json(updatedService);
     } catch (e) {
       console.log(e);
-      response.json("Não foi possível atualizar o perfil do dev.");
+      response.status(404).json({
+        errors: ["Não foi possível atualizar o serviço."],
+      });
     }
   }
 }

@@ -1,5 +1,23 @@
 const clientThreads = require("../threads/clientThreads");
-const ClientModel = require("../models/ClientModel");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
+
+const generateToken = (client) => {
+  console.log(process.env.SECRET_KEY);
+  return jwt.sign(
+    {
+      id: client.id,
+      name: client.name,
+      email: client.email,
+      username: client.username,
+      avatar_url: client.avatar_url,
+      telephone: client.telephone,
+      user_type: "client",
+    },
+    process.env.SECRET_KEY,
+    { expiresIn: "1h" }
+  );
+};
 
 class ClientController {
   async index(request, response) {
@@ -8,7 +26,11 @@ class ClientController {
       response.json(clients);
     } catch (e) {
       console.log(e);
-      response.json({ msg: "Não foi possível listar os clientes." });
+      response.status(404).json({
+        errors: {
+          message: "Não foi possível listar os clientes.",
+        },
+      });
     }
   }
 
@@ -25,7 +47,11 @@ class ClientController {
       return response.json(client);
     } catch (e) {
       console.log(e);
-      response.json({ msg: "Não foi possível realizar a pesquisa." });
+      response.status(404).json({
+        errors: {
+          message: "Não foi possível realizar a pesquisa.",
+        },
+      });
     }
   }
 
@@ -36,11 +62,23 @@ class ClientController {
         client: request.body,
       });
 
-      response.json(newClient);
+      if (newClient.errors) {
+        return response.status(400).json(newClient);
+      }
+
+      console.log(newClient);
+
+      const token = generateToken(newClient);
+      newClient.token = token;
+
+      response.status(200).json(newClient);
     } catch (e) {
-      return response
-        .status(400)
-        .json("Não foi possível concluir o cadastro do cliente.");
+      console.log(e);
+      return response.status(400).json({
+        errors: {
+          message: "Não foi possível concluir o cadastro do cliente.",
+        },
+      });
     }
   }
 
@@ -53,10 +91,14 @@ class ClientController {
         updatedClient: request.body,
       });
 
-      return response.json(clientUpdated);
+      if (clientUpdated.errors) {
+        return response.status(400).json(clientUpdated);
+      }
+
+      return response.status(200).json(clientUpdated);
     } catch (e) {
       console.log(e);
-      return response.status(400).json({
+      return response.status(404).json({
         errors: ["email já existe"],
       });
     }

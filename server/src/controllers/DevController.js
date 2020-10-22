@@ -5,9 +5,11 @@ class DevController {
   async index(request, response) {
     try {
       const devs = await devThreads({ route: "index" });
-      response.json(devs);
+      response.status(200).json(devs);
     } catch (e) {
-      response.json("Não foi possível listar os desenvolvedores.");
+      response.status(404).json({
+        errors: ["Não foi possível listar os desenvolvedores."],
+      });
     }
   }
 
@@ -18,13 +20,17 @@ class DevController {
       const dev = await devThreads({ route: "show", id });
 
       if (!dev) {
-        response.status(400).json("Desenvolvedor não existe!");
+        response.status(400).json({
+          errors: ["Desenvolvedor não existe!"],
+        });
         return;
       }
 
       response.json(dev);
     } catch (e) {
-      response.json("Não foi possível realizar a pesquisa.");
+      response.status(404).json({
+        errors: ["Não foi possível realizar a pesquisa."],
+      });
     }
   }
 
@@ -35,9 +41,15 @@ class DevController {
         dev: request.body,
       });
 
-      response.json(newDev);
+      if (newDev.errors) {
+        return response.status(400).json(newDev);
+      }
+
+      response.status(200).json(newDev);
     } catch (e) {
-      response.json("Não foi possível criar um novo dev.");
+      response.status(404).json({
+        errors: ["Não foi possível criar um novo dev."],
+      });
     }
   }
 
@@ -50,9 +62,15 @@ class DevController {
         updatedDev: request.body,
       });
 
+      if (updatedDev.errors) {
+        return response.status(400).json(updatedDev);
+      }
+
       return response.json(updatedDev);
     } catch (e) {
-      response.json("Não foi possível atualizar o perfil do dev.");
+      response.status(404).json({
+        errors: ["Não foi possível atualizar o perfil do dev."],
+      });
     }
   }
 }

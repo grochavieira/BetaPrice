@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const clientRoutes = require("./routes/clientRoutes");
 require("./database");
+const clientRoutes = require("./routes/clientRoutes");
 const devRoutes = require("./routes/devRoutes");
 const serviceRoutes = require("./routes/serviceRoutes");
 
