@@ -1,10 +1,10 @@
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/grochavieira/BetaPrice?color=%2304D361&style=for-the-badge">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/grochavieira/dev-ninjas?color=%2304D361&style=for-the-badge">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/grochavieira/BetaPrice?style=for-the-badge">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/grochavieira/dev-ninjas?style=for-the-badge">
   
-  <a href="https://github.com/grochavieira/BetaPrice/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/grochavieira/BetaPrice?style=for-the-badge">
+  <a href="https://github.com/grochavieira/dev-ninjas/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/grochavieira/dev-ninjas?style=for-the-badge">
   </a>
     
    <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?style=for-the-badge">
