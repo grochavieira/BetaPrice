@@ -34,7 +34,7 @@
 
 ## 💻 Sobre o projeto
 
-👨‍💻 Site para clientes contratarem programadores. Foi utilizado apenas para treinar layout no frontend, e threads no backend.
+👨‍💻 Site para clientes contratarem programadores. Foi desenvolvido apenas com o intuito de treinar layouts no front, e estudar threads no backend.
 
 ---
 
@@ -120,9 +120,19 @@
 
 ---
 
-<a name="-autor"></a>
+## 🎨 Layout
 
-## 👨🏽‍💻 **Autores**
+---
+
+## 🚀 Como executar o projeto
+
+---
+
+## 🛠 Tecnologias
+
+---
+
+<a name="-autor"></a>
 
 ## 🦸‍♂️ **Autor**
 
