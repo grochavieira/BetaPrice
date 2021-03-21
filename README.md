@@ -1,13 +1,13 @@
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/grochavieira/dev-ninjas?color=%2304D361&style=for-the-badge">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/grochavieira/dev-ninjas?color=%2304D361&style=flat">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/grochavieira/dev-ninjas?style=for-the-badge">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/grochavieira/dev-ninjas?style=flat">
   
   <a href="https://github.com/grochavieira/dev-ninjas/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/grochavieira/dev-ninjas?style=for-the-badge">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/grochavieira/dev-ninjas?style=flat">
   </a>
     
-   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?style=for-the-badge">
+   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?style=flat">
   
  
 </p>
@@ -34,7 +34,7 @@
 
 ## 💻 Sobre o projeto
 
-👨‍💻 Site para clientes contratarem programadores.
+👨‍💻 Site para clientes contratarem programadores. Foi utilizado apenas para treinar layout no frontend, e threads no backend.
 
 ---
 
@@ -120,30 +120,19 @@
 
 ---
 
-## 🎨 Layout
-
----
-
-## 🚀 Como executar o projeto
-
----
-
-## 🛠 Tecnologias
-
----
-
 <a name="-autor"></a>
 
 ## 👨🏽‍💻 **Autores**
 
-<table>
-  <tr>
-    <td align="center"><a href="https://github.com/grochavieira"><img style="border-radius: 50%;" src="https://avatars1.githubusercontent.com/u/48029638?s=460&u=f8d11a7aa9ce76a782ef140a075c5c81be878f00&v=4" width="100px;" alt=""/><br /><sub><b> Guilherme Rocha </b></sub></a><br /><a href="https://www.linkedin.com/in/grochavieira/" title="Linkedin">🦸‍♂️</a></td>
-    <td align="center"><a href="https://github.com/thomasafc"><img style="border-radius: 50%;" src="https://avatars1.githubusercontent.com/u/48140030?s=460&v=4" width="100px;" alt=""/><br /><sub><b> Thomas Anderson </b></sub></a><br /><a href="https://github.com/thomasafc" title="Github">🦸‍♂️</a></td>
-    <td align="center"><a href="https://github.com/victor-m302"><img style="border-radius: 50%;" src="https://avatars2.githubusercontent.com/u/49913795?s=460&u=c6146fa6f6ee284c21a2c18daf33e5b066897309&v=4" width="100px;" alt=""/><br /><sub><b> Victor Masumoto </b></sub></a><br /><a href="https://github.com/victor-m302 " title="Github">🦸‍♂️</a></td>
+## 🦸‍♂️ **Autor**
 
-  </tr>
-</table>
+<p>
+ <img src="https://avatars.githubusercontent.com/u/48029638?s=460&u=40540691957b5aabf04e2e1d4cddf8d3633cb1be&v=4" width="150px;" alt="grochavieira"/>
+ <br />
+ <sub><strong>🌟 Guilherme Rocha Vieira 🌟</strong></sub>
+</p>
+
+[![Linkedin Badge](https://img.shields.io/badge/-linkedin-blue?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/grochavieira/)](https://www.linkedin.com/in/grochavieira/)
 
 ---
 
